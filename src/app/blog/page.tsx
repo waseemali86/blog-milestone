@@ -24,35 +24,44 @@ async function Blogs() {
   console.log(posts);
 
   return (
-    <div className="w-[100%] min-h-screen flex flex-col justify-center bg-[url(/main5.avif)]">
+    <div>
       <section>
+      <div className="w-[100%] flex flex-col justify-center py-3]">
+        <div className="text-center px-5">
+          <h1 className="text-3xl md:text-4xl font-bold font-serif">Latest Blog’s</h1>
+        </div>
+        <div className="text-center py-3 px-20">
+          <h1 className="md:text-2xl text-center font-medium text-sm">
+            Discover the world through captivating stories and vivid imagery.
+            Our blog brings you closer to iconic landmarks, hidden gems, and
+            breathtaking landscapes from around the globe. From the enchanting
+            forests to the mesmerizing auroras, we invite you to explore and
+            experience the magic of our world’s wonders. Join us on this journey
+            and let your imagination soar!
+          </h1>
+        </div>
+    </div>
+      </section>
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 space-x-10">
         {posts.map((post) => (
-           <div key={post.title} className="w-[90%] mx-auto grid grid-cols-1 my-5 md:grid-cols-3 gap-7">
+           <div key={post.title} className="my-5">
                     <Link href={`/blog/${post._id}`}>
-                      <div className="pb-4 m-1 rounded-md transition-all hover:scale-105 duration-200 shadow-xl border items-center">
+                      <div className="w-[90%] mx-auto pb-4 m-1 rounded-md transition-all hover:scale-105 duration-200">
                         <Image
                           src={urlFor(post.image).url()}
                           alt="img"
                           width={200}
                           height={200}
-                          className="size-[350px] rounded-2xlcursor-pointer"
+                          className="size-[350px] rounded-2xl cursor-pointer"
                         />
                         <div>
                           <h2 className="font-bold text-2xl px-3">{post.title}</h2>
                           <p className="text-md px-3 pt-1">{post.summary}</p>
-                          {/* <p className="font-bold text-lg px-3 pt-3">{post.author}</p> */}
-                            <Link href="" className="text-md px-3 pt-3 text-blue-600 hover:text-blue-800">Read More</Link>
-                          
-                          {/* {`/blog/${post.slug.current}`} */}
+                            <Link href={`/blog/${post._id}`} className="text-md px-3 pt-3 text-blue-600 hover:text-blue-800">Read More</Link>
                         </div>
                       </div>
                     </Link>
                 </div>
-          // <div key={post.title}>
-          //   <Link href="blog/title"><h2>{post.title}</h2></Link>
-          //   <h3>{post.summary}</h3>
-          //   <h4>{post.author}</h4>
-          // </div>
         ))}
       </section>
     </div>

@@ -1,35 +1,3 @@
-// import Link from 'next/link'
-// import Image from 'next/image'
-// function Navbar() {
-//   return (
-//     <div className='bg-white w-full h-16 items-center py-2'>
-//         <nav className='flex justify-between mx-10'>
-//         <div className='flex justify-center items-center'>
-//             <Image
-//             className=''
-//             src="/w.logo.png"
-//             alt="Logo"
-//             width={100}
-//             height={100} 
-//             >  
-//             </Image>
-//             <h1 className='text-3xl text-black text-center font-bold'>Waseem</h1>
-//         </div>
-//         <div className='text-lg text-black font-semibold space-x-8'>
-//             <Link href="/">Blog</Link>
-//             {/* <Link href="/">Icon</Link> */}
-//             <Link href="/About">About</Link>
-//             <button className='bg-[#7C4EE4] px-8 py-3 rounded-md text-sm text-white'>Contact Us</button>
-//         </div>
-//         </nav>
-  
-//     </div>
-//   )
-// }
-
-// export default Navbar
-
-
 import Link from "next/link";
 import React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";

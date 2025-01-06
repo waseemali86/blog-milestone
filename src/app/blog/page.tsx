@@ -24,11 +24,11 @@ async function Blogs() {
   console.log(posts);
 
   return (
-    <div>
-      <section>
-      <div className="w-[100%] flex flex-col justify-center py-3]">
+    <div className="max-w-[1450px] mx-auto">
+      <section >
+      <div className="max-w-[1450px] mx-auto w-[100%] flex flex-col justify-center my-14 py-3]">
         <div className="text-center px-5">
-          <h1 className="text-3xl md:text-4xl font-bold font-serif">Latest Blog’s</h1>
+          <h1 className="text-3xl md:text-4xl font-bold ">Latest Blog’s</h1>
         </div>
         <div className="text-center py-3 px-20">
           <h1 className="md:text-2xl text-center font-medium text-sm">
@@ -49,7 +49,7 @@ async function Blogs() {
                       <div className="w-[90%] mx-auto pb-4 m-1 rounded-md transition-all hover:scale-105 duration-200">
                         <Image
                           src={urlFor(post.image).url()}
-                          alt="img"
+                          alt="post.title"
                           width={200}
                           height={200}
                           className="size-[350px] rounded-2xl cursor-pointer"
@@ -57,7 +57,7 @@ async function Blogs() {
                         <div>
                           <h2 className="font-bold text-2xl px-3">{post.title}</h2>
                           <p className="text-md px-3 pt-1">{post.summary}</p>
-                            <Link href={`/blog/${post._id}`} className="text-md px-3 pt-3 text-blue-600 hover:text-blue-800">Read More</Link>
+                            <Link href={`/blog/${post._id}`} className="text-md px-3 pt-3 underline text-blue-600 hover:text-blue-800">Read More</Link>
                         </div>
                       </div>
                     </Link>

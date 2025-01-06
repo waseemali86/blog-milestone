@@ -1,46 +1,62 @@
-// import Image from "next/image"
-// import Link from "next/link"
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+
+import Image from "next/image"
+import Link from "next/link";
+
+interface IPost {
+  title: string;
+  summary: string;
+  image: string;
+  author: string;
+  _id : string;
+}
+async function MoreBlogs() {
+  const query = `*[_type == 'blog']{
+  title,
+  summary,
+  image,
+  author,
+  _id
+  }`;
+
+  const posts:IPost[] = await client.fetch(query);
+  console.log(posts);
 
 
-// function MoreBlogs() {
-//   return (
-//     <>
-// <div className="max-w-[1450px] mx-auto bg-gray-100 py-10">
-//   <div className="max-w-6xl mx-auto px-5">
-//     <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Featured Posts</h2>
-//     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//       {/* Post 1 */}
-//       <div className="bg-white rounded-lg shadow-md overflow-hidden">
-//         <Image
-//           src="story.jpg"
-//           alt="Post Title"
-//           width={100}
-//           height={100}
-//           className="w-full h-48 object-cover"
-//         />
-//         <div className="p-5">
-//           <h3 className="text-xl font-bold text-gray-800">Post Title 1</h3>
-//           <p className="text-gray-600 mt-2">
-//             A short description of the blog post. It can inspire readers to
-//             click and read more.
-//           </p>
-//           <Link
-//             href="/blog/post1"
-//             className="text-blue-500 hover:underline mt-4 block"
-//           >
-//             Read More →
-//           </Link>
-//         </div>
-//       </div>
-     
-     
-//     </div>
-//   </div>
-// </div>
+  return (
+    <>
+<div className="max-w-[1450px] mx-auto bg-gray-100 py-10">
+  <div className="px-5">
+    <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Featured Posts</h2>
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 space-x-10">
+        {posts.map((post) => (
+           <div key={post.title} className="my-5">
+                    <Link href={`/blog/${post._id}`}>
+                      <div className="w-[90%] mx-auto pb-4 m-1 rounded-md transition-all hover:scale-105 duration-200">
+                        <Image
+                          src={urlFor(post.image).url()}
+                          alt="post.title"
+                          width={200}
+                          height={200}
+                          className="size-[350px] rounded-2xl cursor-pointer"
+                        />
+                        <div>
+                          <h2 className="font-bold text-2xl px-3">{post.title}</h2>
+                          <p className="text-md px-3 pt-1">{post.summary}</p>
+                            <Link href={`/blog/${post._id}`} className="text-md px-3 pt-3 underline text-blue-600 hover:text-blue-800">Read More</Link>
+                        </div>
+                      </div>
+                    </Link>
+                </div>
+        ))}
+      </section>
+    </div>
+  </div>
 
     
-//     </>
-//   )
-// }
+    </>
+  )
+}
 
-// export default MoreBlogs
+export default MoreBlogs

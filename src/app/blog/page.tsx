@@ -30,7 +30,7 @@ async function Blogs() {
         <div className="text-center px-5">
           <h1 className="text-3xl md:text-4xl font-bold ">Latest Blog’s</h1>
         </div>
-        <div className="text-center py-3 px-20">
+        <div className="text-center md:px-20">
           <h1 className="md:text-2xl text-center font-medium text-sm">
             Discover the world through captivating stories and vivid imagery.
             Our blog brings you closer to iconic landmarks, hidden gems, and
@@ -42,11 +42,11 @@ async function Blogs() {
         </div>
     </div>
       </section>
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 space-x-10">
+      <section className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 sm:space-x-10">
         {posts.map((post) => (
            <div key={post.title} className="my-5">
                     <Link href={`/blog/${post._id}`}>
-                      <div className="w-[90%] mx-auto pb-4 m-1 rounded-md transition-all hover:scale-105 duration-200">
+                      <div className="w-[90%] mx-auto rounded-md transition-all hover:scale-105 duration-200">
                         <Image
                           src={urlFor(post.image).url()}
                           alt="post.title"
@@ -55,9 +55,9 @@ async function Blogs() {
                           className="size-[350px] rounded-2xl cursor-pointer"
                         />
                         <div>
-                          <h2 className="font-bold text-2xl px-3">{post.title}</h2>
-                          <p className="text-md px-3 pt-1">{post.summary}</p>
-                            <Link href={`/blog/${post._id}`} className="text-md px-3 pt-3 underline text-blue-600 hover:text-blue-800">Read More</Link>
+                          <h2 className="font-bold text-2xl ">{post.title}</h2>
+                          <p className="text-md pt-1">{post.summary}</p>
+                            <Link href={`/blog/${post._id}`} className="text-md pt-3 underline text-blue-600 hover:text-blue-800">Read More</Link>
                         </div>
                       </div>
                     </Link>

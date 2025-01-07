@@ -29,5 +29,10 @@ export const Blog = defineType({
       type: "string",
       title: "Author Name",
     }),
+    defineField({
+      name: "content",
+      type: "text",
+      title: "Content ",
+    }),
   ],
 });

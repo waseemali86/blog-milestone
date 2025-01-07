@@ -9,6 +9,7 @@ interface IPost {
   summary: string;
   image: string;
   author: string;
+  content: string;
   _id: string;
 }
 
@@ -40,8 +41,8 @@ console.log(query);
     <h2 className="text-2xl sm:text-3xl font-semibold mt-6 text-center sm:text-left">
       {query.title}
     </h2>
-    <p className="text-base sm:text-lg mt-4 text-center sm:text-left opacity-80">
-      {query.summary}
+    <p className="text-base sm:text-lg mt-4 text-left opacity-80">
+      {query.summary} {query.content}
     </p>
   </div>
   <CommentSection/>
